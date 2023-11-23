@@ -10,21 +10,32 @@ using namespace std;
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
 const int mod = 1e9 + 7;
 const int N = 1e7;
-ll binexp(ll base, ll exp, ll M) {
-  if (exp == 0)
-    return 1;
-  ll ret = binexp(base, exp / 2, M);
-  ret = ((ret % M) * (ret % M)) % M;
-  if (exp & 1)
-    return ((ret % M) * (base % M)) % M;
-  return ret;
+bool by(pair<int, int> a, pair<int, int> b) {
+  if (a.second < b.second)
+    return true;
+  return false;
 }
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  int n;
+  cin >> n;
+  pair<int, int> events[n];
+  for (int i = 0; i < n; i++)
+    cin >> events[i].first >> events[i].second;
+  sort(events, events + n, by);
+  int cur = -1;
+  int ans = 0;
+// for(auto& a : events)
+//  cout << a.first << " " << a.second << endl;
+// cout << endl;
+  for (int i = 0; i < n; i++) {
+    if (events[i].first >= cur) {
+      ans++;
+      cur = events[i].second;
+    }
+  }
+  cout << ans << endl;
 }
-//#define ONLINE_JUDGE
+#define ONLINE_JUDGE
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
@@ -33,7 +44,7 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
   int t = 1;
-  cin >> t;
+//cin >> t;
   while (t--) {
     solve();
   }

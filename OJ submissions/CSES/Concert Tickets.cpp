@@ -10,19 +10,32 @@ using namespace std;
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
 const int mod = 1e9 + 7;
 const int N = 1e7;
-ll binexp(ll base, ll exp, ll M) {
-  if (exp == 0)
-    return 1;
-  ll ret = binexp(base, exp / 2, M);
-  ret = ((ret % M) * (ret % M)) % M;
-  if (exp & 1)
-    return ((ret % M) * (base % M)) % M;
-  return ret;
-}
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  int n, m;
+  cin >> n >> m;
+  multiset<int> ms;
+  for (int i = 0; i < n; i++) {
+    int x;
+    cin >> x;
+    ms.insert(x);
+  }
+  for (int i = 0; i < m; i++) {
+    int x;
+    cin >> x;
+    if (ms.size() == 0) {
+      cout << -1 << endl;
+      continue;
+    }
+    auto it = ms.upper_bound(x);
+    if (it == ms.begin()) {
+      cout << -1 << endl;
+    }
+    else {
+      it--;
+      cout << *it << endl;
+      ms.erase(it);
+    }
+  }
 }
 //#define ONLINE_JUDGE
 int main() {
@@ -33,7 +46,7 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
   int t = 1;
-  cin >> t;
+//cin >> t;
   while (t--) {
     solve();
   }

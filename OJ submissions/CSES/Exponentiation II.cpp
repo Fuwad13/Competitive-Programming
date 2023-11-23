@@ -20,9 +20,10 @@ ll binexp(ll base, ll exp, ll M) {
   return ret;
 }
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  ll a, b, c;
+  cin >> a >> b >> c;
+  ll temp = binexp(b, c, mod - 1);
+  cout << binexp(a, temp, mod) << endl;
 }
 //#define ONLINE_JUDGE
 int main() {

@@ -9,20 +9,26 @@ using namespace std;
 #define all(v) (v).begin(), (v).end()
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
 const int mod = 1e9 + 7;
-const int N = 1e7;
-ll binexp(ll base, ll exp, ll M) {
-  if (exp == 0)
-    return 1;
-  ll ret = binexp(base, exp / 2, M);
-  ret = ((ret % M) * (ret % M)) % M;
-  if (exp & 1)
-    return ((ret % M) * (base % M)) % M;
-  return ret;
-}
+const int N = 1e6 + 10;
+ll dp[N];
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  ll n, x;
+  cin >> n >> x;
+  vector<ll> coins(n);
+  read(coins);
+//sort(all(coins));
+//memset(dp, 0, sizeof(dp));
+  dp[0] = 1;
+  for (ll i = 1; i <= x; i++) {
+    for (int j = 0; j < n; j++) {
+      if (i >= coins[j]) {
+        // dp[i] = (dp[i]%mod+dp[i-coins[j]]%mod)%mod;
+        dp[i] += dp[i - coins[j]];
+        dp[i] %= mod;
+      }
+    }
+  }
+  cout << dp[x] << endl;
 }
 //#define ONLINE_JUDGE
 int main() {
@@ -33,7 +39,7 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
   int t = 1;
-  cin >> t;
+//cin >> t;
   while (t--) {
     solve();
   }

@@ -9,20 +9,32 @@ using namespace std;
 #define all(v) (v).begin(), (v).end()
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
 const int mod = 1e9 + 7;
-const int N = 1e7;
-ll binexp(ll base, ll exp, ll M) {
-  if (exp == 0)
-    return 1;
-  ll ret = binexp(base, exp / 2, M);
-  ret = ((ret % M) * (ret % M)) % M;
-  if (exp & 1)
-    return ((ret % M) * (base % M)) % M;
-  return ret;
-}
+const int N = 1010;
+int grid[N][N];
+int pre[N][N];
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  int n, q;
+  cin >> n >> q;
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
+      char ch;
+      cin >> ch;
+      if (ch == '*') {
+        grid[i][j] = 1;
+      }
+    }
+  }
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
+      pre[i][j] = pre[i][j - 1] + pre[i - 1][j] - pre[i - 1][j - 1] + grid[i][j];
+    }
+  }
+  while (q--) {
+    int x1, y1, x2, y2;
+    cin >> y1 >> x1 >> y2 >> x2;
+    int temp = pre[y2][x2] - pre[y2][x1 - 1] - pre[y1 - 1][x2] + pre[y1 - 1][x1 - 1];
+    cout << temp << endl;
+  }
 }
 //#define ONLINE_JUDGE
 int main() {
@@ -33,7 +45,7 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
   int t = 1;
-  cin >> t;
+//cin >> t;
   while (t--) {
     solve();
   }

@@ -20,9 +20,23 @@ ll binexp(ll base, ll exp, ll M) {
   return ret;
 }
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  ll n;
+  cin >> n;
+  ll modinv2 = binexp(2, mod - 2, mod);
+  ll total = 0;
+  ll at = 1;
+  while (at <= n) {
+    ll amt = n / at; // number of times it contrib. to total sum;
+    ll last_same = n / amt; // last div. with same times of appearance
+    // for this range, find the sum of the div. values
+    // using arithmatic progression series sum formula
+    ll range = (last_same - at + 1) % mod;
+    ll sum = ((((range % mod) * ((at % mod + last_same % mod) % mod)) % mod) * modinv2) % mod;
+    ll temp = ((sum % mod) * (amt % mod)) % mod;
+    total = (total % mod + temp % mod) % mod;
+    at = last_same + 1;
+  }
+  cout << total << endl;
 }
 //#define ONLINE_JUDGE
 int main() {
@@ -33,7 +47,7 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
   int t = 1;
-  cin >> t;
+//cin >> t;
   while (t--) {
     solve();
   }

@@ -9,20 +9,29 @@ using namespace std;
 #define all(v) (v).begin(), (v).end()
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
 const int mod = 1e9 + 7;
-const int N = 1e7;
-ll binexp(ll base, ll exp, ll M) {
-  if (exp == 0)
+const int N = 1e6;
+int memo[N + 10];
+int ways(int n) {
+  if (n == 0)
     return 1;
-  ll ret = binexp(base, exp / 2, M);
-  ret = ((ret % M) * (ret % M)) % M;
-  if (exp & 1)
-    return ((ret % M) * (base % M)) % M;
-  return ret;
+  if (n < 0)
+    return 0;
+  if (memo[n] != -1)
+    return memo[n];
+  int res = 0;
+  res = (res % mod + ways(n - 1) % mod) % mod;
+  res = (res % mod + ways(n - 2) % mod) % mod;
+  res = (res % mod + ways(n - 3) % mod) % mod;
+  res = (res % mod + ways(n - 4) % mod) % mod;
+  res = (res % mod + ways(n - 5) % mod) % mod;
+  res = (res % mod + ways(n - 6) % mod) % mod;
+  return memo[n] = res;
 }
 void solve() {
-  ll a, b;
-  cin >> a >> b;
-  cout << binexp(a, b, mod) << endl;
+  int n;
+  cin >> n;
+  memset(memo, -1, sizeof(memo));
+  cout << ways(n) << endl;
 }
 //#define ONLINE_JUDGE
 int main() {
@@ -33,7 +42,7 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
   int t = 1;
-  cin >> t;
+//cin >> t;
   while (t--) {
     solve();
   }
