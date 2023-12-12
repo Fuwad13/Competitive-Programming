@@ -7,3 +7,16 @@ ll binexp(ll base, ll exp, ll M){
         return ((ret%M)*(base%M))%M;
     return ret;
 }
+
+// iterative
+
+ll binexp(ll base, ll exp, ll M) {
+	base %= M;
+	ll res = 1;
+	while (exp > 0) {
+		if (exp % 2 == 1) { res = res * base % M; }
+		base = base * base % M;
+		exp>>=1;
+	}
+	return res;
+}

@@ -1,5 +1,5 @@
 bool mark[N+1];
-
+vector<int> primes;
 void sieve(){
     mark[0] = mark[1] = 1;
     for(int i = 4; i <= N; i+=2)
@@ -10,4 +10,8 @@ void sieve(){
                 mark[j]=1;
         }
     }
+    primes.push_back(2);
+    for(int i=3; i <=N; i+=2)
+        if(!mark[i])
+            primes.push_back(i);
 }
