@@ -6,6 +6,7 @@ struct segment_tree{
     T identity = T();
     T add_identity = T();
     T set_identity = T();
+    segment_tree(): n(0), merge(nullptr), identity(0), add_identity(0), set_identity(0){}
     segment_tree(int n, function<T(const T&, const T&)> merge, T identity, T add_identity, T set_identity): 
     n(n), merge(merge), identity(identity), add_identity(add_identity), set_identity(set_identity){
         stree.resize(4*n+5);

@@ -4,6 +4,7 @@ struct segment_tree{
     vector<T> stree;
     function<T(const T&, const T&)> merge;
     T identity = T();
+    segment_tree(): n(0), merge(nullptr), identity(0){}
     segment_tree(int n, function<T(const T&, const T&)> merge, T identity): n(n), merge(merge), identity(identity){
         stree.resize(4*n+5);
     }
@@ -72,6 +73,7 @@ struct segment_tree{
     vector<T> stree;
     function<T(const T&, const T&)> merge;
     T identity = T();
+    segment_tree(): n(0), merge(nullptr), identity(0){}
     segment_tree(int n, function<T(const T&, const T&)> merge, T identity): n(n), merge(merge), identity(identity){
         stree.resize(n<<1);
     }
