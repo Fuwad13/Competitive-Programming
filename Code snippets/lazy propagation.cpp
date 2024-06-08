@@ -116,3 +116,13 @@ struct segment_tree{
     }
     T query(int l, int r){return query(1, 0, n-1, l, r);}
 };
+
+/**
+ * @brief RURQ Segment Tree 
+ * @param merge the function to merge two nodes
+ * @param identity the identity element of the merge function/operation
+ * @param add_identity the identity element of the add operation
+ * @param set_identity the identity element of the set operation
+ * usage: segment_tree<int> st(n, [](int a, int b){return a+b;}, 0, 0, -1);
+ * Note: change the propatage function according to the operation
+ **/
