@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+vector<int> phi(N+1);
+
+void sieve_phi(){
+	for(int i = 1; i <= N; i++)
+		phi[i]=i;
+	for(int i =2; i <=N; i++){
+		if(phi[i]==i){
+			for(int j = i; j <=N;j+=i)
+				phi[j]-=phi[j]/i;
+		}
+	}
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>totient</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.c++</scope> -->
+</snippet>

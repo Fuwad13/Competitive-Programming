@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+#define all(v) (v).begin(), (v).end()
+
+const ll oo = 1e17;
+const int mod = 1e9+7; // 998244353;
+const int N = 2e5;
+
+void solve(){
+    ${1:~}
+}
+
+signed main(){
+    auto begin = std::chrono::high_resolution_clock::now();
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int t = 1;
+    cin >> t;
+    for(int i = 1; i <=t; i++){
+        solve();
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    cerr << setprecision(4) << fixed;
+    cerr << "Time: " << 
+    std::chrono::duration_cast<std::chrono::duration<double>>(end - begin).count() 
+    << " seconds" << endl;
+    return 0;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ct</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

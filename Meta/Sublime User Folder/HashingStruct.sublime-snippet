@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+struct HashedString {
+    ll B = 9973;
+    vector<ll> pow{1};
+    // p_hash[i] is the hash of the first i characters of the given string
+    vector<ll> p_hash;
+    HashedString(const string &s, ll B = 9973) : p_hash(s.size() + 1), B(B) {
+        while (pow.size() < s.size()) { pow.push_back((pow.back() * B) % mod); }
+
+        p_hash[0] = 0;
+        for (int i = 0; i < (int)s.size(); i++) {
+            p_hash[i + 1] = ((p_hash[i] * B) % mod + s[i]) % mod;
+        }
+    }
+
+    ll getHash(int start, int end) {
+        ll raw_val =
+            (p_hash[end + 1] - (p_hash[start] * pow[end - start + 1]));
+        return (raw_val % mod + mod) % mod;
+    }
+};
+// for randomised base (anti hack)
+// mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+// base = uniform_int_distribution<ll>(0, mod - 1)(rng);
+$1
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>HashStruct</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

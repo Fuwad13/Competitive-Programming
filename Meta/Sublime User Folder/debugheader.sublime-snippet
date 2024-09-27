@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+#ifdef LOCAL
+#include "debug.h"
+#else
+#define debug(...) 69
+#endif
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dbgheader</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
