@@ -11,10 +11,9 @@ struct segment_tree{
     void build(const vector<T>& arr, int node, int b, int e){
         if(b==e){
             stree[node] = arr[b];
-/**
- * @brief 
- * 
- */>>1;
+            return;
+        }
+        int mid = (b+e)>>1;
         build(arr, 2*node, b, mid);
         build(arr, 2*node+1, mid+1, e);
         stree[node] = merge(stree[2*node],stree[2*node+1]);
@@ -35,6 +34,7 @@ struct segment_tree{
         set(2*node+1, mid+1, e, ind, val);
         stree[node] = merge(stree[2*node],stree[2*node+1]);
     
+    }
     void set(int ind, T val){set(1, 0, n-1, ind, val);}
 
     void update(int node, int b, int e, int ind, T val){
