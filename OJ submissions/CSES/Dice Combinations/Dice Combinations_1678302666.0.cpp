@@ -1,40 +1,45 @@
 #include <bits/stdc++.h>
- using namespace std;
- #define ll long long
+using namespace std;
+#define ll long long
 #define pb push_back
 #define pf push_front
 #define ppb pop_back
-#define read(v) for(auto& _:v) cin>>_
-#define write(v) for(auto& _:v) cout<<_<<' ';cout<<'\n'
+#define read(v)                                                                \
+    for (auto &_ : v)                                                          \
+    cin >> _
+#define write(v)                                                               \
+    for (auto &_ : v)                                                          \
+        cout << _ << ' ';                                                      \
+    cout << '\n'
 #define all(v) (v).begin(), (v).end()
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
- const int mod = 1e9+7;
+const int mod = 1e9 + 7;
 const int N = 1e7;
- void solve(){
- int n;
- cin>>n;
- vector<ll> ways(n+1);
- ways[0] = 1;
- for(int i = 1; i <=n; i++){
-  for(int j = 1; j <=6; j++){
-   if(i>=j)
-    ways[i] = (ways[i]%mod + ways[i-j]%mod)%mod;
-  }
- }
- cout << ways[n]%mod << endl;
- }
- //#define ONLINE_JUDGE
- int main(){
-   ios_base::sync_with_stdio(false);
- cin.tie(nullptr);
- #ifndef ONLINE_JUDGE
- freopen("input.txt", "r", stdin);
- freopen("output.txt", "w", stdout);
- #endif
- int t = 1;
- //cin >> t;
- while(t--){
-  solve();
- }
- return 0;
- }
+void solve() {
+    int n;
+    cin >> n;
+    vector<ll> ways(n + 1);
+    ways[0] = 1;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= 6; j++) {
+            if (i >= j)
+                ways[i] = (ways[i] % mod + ways[i - j] % mod) % mod;
+        }
+    }
+    cout << ways[n] % mod << endl;
+}
+// #define ONLINE_JUDGE
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}

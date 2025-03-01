@@ -1,17 +1,17 @@
-bool mark[N+1];
+bool mark[N + 1];
 vector<int> primes;
-void sieve(){
-    mark[0] = mark[1] = 1;
-    for(int i = 4; i <= N; i+=2)
-        mark[i] = 1;
-    for(int i =3; i*i <= N; i+=2){
-        if(!mark[i]){
-            for(int j = i*i; j <= N; j+=2*i)
-                mark[j]=1;
-        }
+void sieve() {
+  mark[0] = mark[1] = 1;
+  for (int i = 4; i <= N; i += 2)
+    mark[i] = 1;
+  for (int i = 3; i * i <= N; i += 2) {
+    if (!mark[i]) {
+      for (int j = i * i; j <= N; j += 2 * i)
+        mark[j] = 1;
     }
-    primes.push_back(2);
-    for(int i=3; i <=N; i+=2)
-        if(!mark[i])
-            primes.push_back(i);
+  }
+  primes.push_back(2);
+  for (int i = 3; i <= N; i += 2)
+    if (!mark[i])
+      primes.push_back(i);
 }

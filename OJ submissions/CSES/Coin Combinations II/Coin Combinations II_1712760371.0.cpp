@@ -1,47 +1,52 @@
 #include <bits/stdc++.h>
- using namespace std;
- #define ll long long
+using namespace std;
+#define ll long long
 #define pb push_back
 #define pf push_front
 #define ppb pop_back
-#define read(v) for(auto& _:v) cin>>_
-#define write(v) for(auto& _:v) cout<<_<<' ';cout<<'\n'
+#define read(v)                                                                \
+    for (auto &_ : v)                                                          \
+    cin >> _
+#define write(v)                                                               \
+    for (auto &_ : v)                                                          \
+        cout << _ << ' ';                                                      \
+    cout << '\n'
 #define all(v) (v).begin(), (v).end()
 #define watch(x) cerr << "\n" << (#x) << " is " << (x) << endl
- const int mod = 1e9+7;
-const int N = 1e6+10;
+const int mod = 1e9 + 7;
+const int N = 1e6 + 10;
 ll dp[N];
 #ifdef LOCAL
 #include "debug.h"
 #else
 #define debug(...) 69
 #endif
- void solve(){
+void solve() {
     ll n, x;
-    cin>>n>>x;
+    cin >> n >> x;
     vector<ll> coins(n);
-        read(coins);
-    //sort(all(coins));
-    //memset(dp, 0, sizeof(dp));
-    dp[0]=1;
-    for(int j = 0; j < n; j++){
-        for(ll i = 0; i <=x; i++){
-            if(i+coins[j]<=x){
-                dp[i+coins[j]]+=dp[i];
+    read(coins);
+    // sort(all(coins));
+    // memset(dp, 0, sizeof(dp));
+    dp[0] = 1;
+    for (int j = 0; j < n; j++) {
+        for (ll i = 0; i <= x; i++) {
+            if (i + coins[j] <= x) {
+                dp[i + coins[j]] += dp[i];
                 // dp[i]+=dp[i-coins[j]];
-                dp[i+coins[j]]%=mod;
+                dp[i + coins[j]] %= mod;
             }
         }
     }
     cout << dp[x] << endl;
- }
-  int main(){
-      ios_base::sync_with_stdio(false);
+}
+int main() {
+    ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     int t = 1;
-    //cin >> t;
-    while(t--){
+    // cin >> t;
+    while (t--) {
         solve();
     }
     return 0;
- }
+}

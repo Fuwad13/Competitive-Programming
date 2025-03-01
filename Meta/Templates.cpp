@@ -11,14 +11,15 @@
 using namespace std;
 using namespace __gnu_pbds;
 template <class T>
-using iset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+using iset =
+    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 #define endl "\n"
 #define pb push_back
-#define write(v)          \
-    for (auto &_ : v)     \
-        cout << _ << ' '; \
-    cout << '\n'
+#define write(v)                                                               \
+  for (auto &_ : v)                                                            \
+    cout << _ << ' ';                                                          \
+  cout << '\n'
 #define all(v) (v).begin(), (v).end()
 #define watch(x) cerr << (#x) << " is " << (x) << endl
 
@@ -29,32 +30,30 @@ const ll oo = 1e17;
 const int mod = 1e9 + 7;
 const int N = 1e7;
 
-void solve()
-{
-}
+void solve() {}
 
 #define ONLINE_JUDGE
 
-int32_t main()
-{
-    auto begin = std::chrono::high_resolution_clock::now();
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+int32_t main() {
+  auto begin = std::chrono::high_resolution_clock::now();
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
-    int t = 1;
-    cin >> t;
-    for (int i = 1; i <= t; i++)
-    {
-        solve();
-    }
-    auto end = std::chrono::high_resolution_clock::now();
-    cerr << setprecision(4) << fixed;
-    cerr << "Time: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - begin).count()
-         << " seconds" << endl;
-    return 0;
+  int t = 1;
+  cin >> t;
+  for (int i = 1; i <= t; i++) {
+    solve();
+  }
+  auto end = std::chrono::high_resolution_clock::now();
+  cerr << setprecision(4) << fixed;
+  cerr << "Time: "
+       << std::chrono::duration_cast<std::chrono::duration<double>>(end - begin)
+              .count()
+       << " seconds" << endl;
+  return 0;
 }
 
 // ------------ 2 ------------
@@ -68,26 +67,24 @@ const ll oo = 1e17;
 const int mod = 1e9 + 7; // 998244353;
 const int N = 2e5;
 
-void solve()
-{
-}
+void solve() {}
 
-signed main()
-{
-    auto begin = std::chrono::high_resolution_clock::now();
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int t = 1;
-    cin >> t;
-    for (int i = 1; i <= t; i++)
-    {
-        solve();
-    }
-    auto end = std::chrono::high_resolution_clock::now();
-    cerr << setprecision(4) << fixed;
-    cerr << "Time: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - begin).count()
-         << " seconds" << endl;
-    return 0;
+signed main() {
+  auto begin = std::chrono::high_resolution_clock::now();
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  int t = 1;
+  cin >> t;
+  for (int i = 1; i <= t; i++) {
+    solve();
+  }
+  auto end = std::chrono::high_resolution_clock::now();
+  cerr << setprecision(4) << fixed;
+  cerr << "Time: "
+       << std::chrono::duration_cast<std::chrono::duration<double>>(end - begin)
+              .count()
+       << " seconds" << endl;
+  return 0;
 }
 
 // ------------ 3 ------------
